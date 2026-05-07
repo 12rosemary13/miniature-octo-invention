@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>NovaStudio | Digital Craftsmanship</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #111827;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* container utility */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* header & navigation */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03), 0 1px 6px -1px rgba(0,0,0,0.05);
+      z-index: 100;
+      transition: all 0.2s;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1f2b3c, #2d4a8c);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1f2937;
+      transition: color 0.2s ease;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    /* buttons & elements */
+    .btn-primary {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.8rem;
+      font-weight: 600;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: inline-block;
+      text-decoration: none;
+      box-shadow: 0 2px 5px rgba(37,99,235,0.2);
+    }
+
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(37,99,235,0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #2563eb;
+      color: #2563eb;
+      padding: 0.7rem 1.6rem;
+      font-weight: 600;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      background: #2563eb;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* hero section */
+    .hero {
+      padding: 5rem 0 6rem 0;
+      background: linear-gradient(145deg, #f9fafc 0%, #ffffff 100%);
+    }
+
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-badge {
+      background: #e0e7ff;
+      color: #1e40af;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #111827, #2563eb);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #4b5563;
+      max-width: 90%;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      flex: 1;
+      background: radial-gradient(circle at 30% 20%, rgba(37,99,235,0.08), transparent 70%);
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .code-icon {
+      font-size: 12rem;
+      color: #2563eb;
+      opacity: 0.7;
+      filter: drop-shadow(0 12px 15px rgba(37,99,235,0.15));
+      transition: transform 0.3s;
+    }
+
+    /* sections common */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      letter-spacing: -0.01em;
+      position: relative;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: #2563eb;
+      margin: 0.8rem auto 0;
+      border-radius: 4px;
+    }
+
+    /* about */
+    .about-grid {
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .about-text {
+      flex: 1;
+    }
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .about-text p {
+      color: #374151;
+      margin-bottom: 1.8rem;
+    }
+    .skill-list {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .skill-tag {
+      background: #eef2ff;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: #1e40af;
+    }
+    .about-icon {
+      flex: 0.8;
+      background: #f3f6fc;
+      padding: 2rem;
+      border-radius: 40px;
+      text-align: center;
+      box-shadow: 0 15px 30px -12px rgba(0,0,0,0.05);
+    }
+    .about-icon i {
+      font-size: 6rem;
+      color: #2563eb;
+    }
+
+    /* services cards */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .service-card {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+      box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
+      border: 1px solid #eef2ff;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: #bfdbfe;
+      box-shadow: 0 24px 36px -12px rgba(37,99,235,0.2);
+    }
+    .service-icon {
+      font-size: 2.8rem;
+      color: #2563eb;
+      margin-bottom: 1.2rem;
+    }
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+    .service-card p {
+      color: #4b5563;
+    }
+
+    /* contact form */
+    .contact-wrapper {
+      background: #f8fafc;
+      border-radius: 48px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      border: 1px solid #e2e8f0;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border-radius: 32px;
+      border: 1px solid #e2e8f0;
+      background: white;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+    }
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .contact-flex {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .contact-info h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.2rem 0;
+    }
+    .contact-detail i {
+      width: 40px;
+      height: 40px;
+      background: #eef2ff;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #2563eb;
+      font-size: 1.2rem;
+    }
+    .contact-form {
+      flex: 1.2;
+    }
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 2.5rem 0;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .footer-social a {
+      color: #cbd5e1;
+      margin: 0 0.8rem;
+      font-size: 1.3rem;
+      transition: 0.2s;
+      display: inline-block;
+    }
+    .footer-social a:hover {
+      color: white;
+      transform: translateY(-3px);
+    }
+    hr {
+      margin: 1.5rem 0;
+      border-color: #1e293b;
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 24px;
+      }
+      .hero-content h1 {
+        font-size: 2.3rem;
+      }
+      .hero-content p {
+        max-width: 100%;
+      }
+      .navbar {
+        flex-direction: column;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        justify-content: center;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .about-grid {
+        flex-direction: column;
+      }
+      .hero-visual {
+        order: -1;
+      }
+    }
+    @media (max-width: 480px) {
+      .btn-primary, .btn-outline {
+        padding: 0.6rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">✦ NovaStudio</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero / Home Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="hero-badge"><i class="fas fa-bolt"></i> Digital innovation lab</span>
+          <h1>Crafting bold <br> digital experiences</h1>
+          <p>We blend strategy, design, and cutting‑edge code to build websites and brands that truly connect. Elevate your digital presence today.</p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn-primary">Start a project <i class="fas fa-arrow-right"></i></a>
+            <a href="#services" class="btn-outline">Explore services</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <i class="fas fa-laptop-code code-icon"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">Who we are</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <h3>Creativity meets <span style="color:#2563eb;">technical excellence</span></h3>
+          <p>NovaStudio is a collective of designers, developers, and digital strategists. We’re driven by the belief that meaningful design + robust code creates unforgettable user journeys. Since 2020, we’ve helped brands across the globe scale their digital footprint with clarity and purpose.</p>
+          <p>Our process is human-centric: we listen, prototype, iterate, and deliver high-performance web solutions that stand the test of time.</p>
+          <div class="skill-list">
+            <span class="skill-tag">UX Research</span>
+            <span class="skill-tag">React / Vue</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Responsive design</span>
+            <span class="skill-tag">SEO first</span>
+          </div>
+        </div>
+        <div class="about-icon">
+          <i class="fas fa-brain"></i>
+          <p style="margin-top: 1rem; font-weight: 500;">Innovation · Empathy · Code</p>
+          <p style="font-size: 0.9rem; color:#4b5563;">50+ projects delivered</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" style="background: #fefeff;">
+    <div class="container">
+      <h2 class="section-title">What we deliver</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fab fa-figma"></i></div>
+          <h3>UI/UX Design</h3>
+          <p>Intuitive interfaces, wireframes, prototypes, and design systems that users love.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-code"></i></div>
+          <h3>Web Development</h3>
+          <p>Modern frontend & backend: fast, responsive, accessible, and tailored to your goals.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Growth Strategy</h3>
+          <p>SEO, conversion optimization, and data-driven insights to accelerate your brand.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h3>Mobile-First</h3>
+          <p>Flawless experience on any device, from smartphones to large desktops.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Let’s work together</h2>
+      <div class="contact-wrapper">
+        <div class="contact-flex">
+          <div class="contact-info">
+            <h3>Tell us about your vision</h3>
+            <p>We’re just a message away. Whether you’re a startup or an established brand, we’d love to hear from you.</p>
+            <div class="contact-detail">
+              <i class="fas fa-envelope"></i>
+              <span>hello@novastudio.com</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>San Francisco / Berlin · Remote</span>
+            </div>
+            <div class="contact-detail">
+              <i class="fas fa-clock"></i>
+              <span>Mon-Fri: 9:00 – 18:00 (CET)</span>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form id="demo-contact-form">
+              <div class="form-group">
+                <input type="text" id="name" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" id="email" placeholder="Email address" required>
+              </div>
+              <div class="form-group">
+                <textarea id="message" placeholder="What would you like to build?"></textarea>
+              </div>
+              <button type="submit" class="btn-primary" style="width:100%;"><i class="far fa-paper-plane"></i> Send message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-social">
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <hr style="max-width: 200px; margin: 1.5rem auto;">
+    <p>© 2025 NovaStudio — Crafting digital excellence. All rights reserved.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem;">Built with <i class="fas fa-heart" style="color:#ef4444;"></i> for a modern web</p>
+  </div>
+</footer>
+
+<script>
+  // Smooth contact form demo handling (prevents actual page reload)
+  const contactForm = document.getElementById('demo-contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const msgInput = document.getElementById('message');
+      
+      if (nameInput.value.trim() === '' || emailInput.value.trim() === '' || msgInput.value.trim() === '') {
+        alert('Please fill out all fields before sending.');
+        return;
+      }
+      
+      // simple email validation
+      const emailRegex = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+      if (!emailRegex.test(emailInput.value.trim())) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+      
+      alert(`✨ Thanks ${nameInput.value.trim()}! Your message has been received. We'll reach out soon. (Demo mode)`);
+      contactForm.reset();
+    });
+  }
+
+  // optional: add active nav highlight on scroll (just for extra elegance)
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  
+  function updateActiveLink() {
+    let current = '';
+    const scrollPos = window.scrollY + 120;
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.style.color = '';
+      link.style.fontWeight = '';
+      if (link.getAttribute('href') === `#${current}`) {
+        link.style.color = '#2563eb';
+        link.style.fontWeight = '600';
+      } else {
+        link.style.color = '#1f2937';
+        link.style.fontWeight = '500';
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', updateActiveLink);
+  window.addEventListener('load', updateActiveLink);
+</script>
+</body>
+</html>
